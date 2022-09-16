@@ -17,6 +17,12 @@ class hmiam_hr(models.Model):
     study_start_date = fields.Date("Start Date")
     study_end_date = fields.Date("End Date")
 
+    _sql_constraints = [
+                     ('identification_id_unique', 
+                      'unique(identification_id)',
+                      'Já existe um funcionário com essa identificação!')
+]
+
     def _default_fullname(self):
         return '{0} {1} {2}'.format(self.name, self.middle_name, self.surname)
         
